@@ -1,10 +1,19 @@
 from guizero import *
 
-def change_message():
-    message.value = "You pressed the button!"
+def count():
+    chars.value = len(name.value)
 
-app = App(title="Hello World")
-message = Text(app, text="Wilkommen!")
-button = PushButton(app, text="Press me", command=change_message)
+def say_hello():
+    message.value = "Hello"
 
+def goodbye():
+    message.destroy()
+
+app = App(title="What's your name?")
+message = Text(app, text="Enter your name!")
+name = TextBox(app, command=count)
+destroy = PushButton(app, text="Destroy", command=goodbye)
+
+chars = Text(app)
+button = PushButton(app, text="Press me", command=say_hello)
 app.display()
