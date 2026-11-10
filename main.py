@@ -10,7 +10,7 @@ def goodbye():
     message.destroy()
 
 app = App(title="What's your name?")
-message = Text(app, text="Enter your name please!")
+message = Text(app, text="Enter your name!")
 name = TextBox(app, command=count)
 destroy = PushButton(app, text="Destroy", command=goodbye)
 
