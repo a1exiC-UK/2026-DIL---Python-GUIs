@@ -27,17 +27,7 @@ age = TextBox(form_box, grid=[2, 1], width="fill")
 result = Text(app, grid=[3, 0], text="")
 
 def submit():
-    result.value = (
-        "Hello "
-        + forename.value
-        + " "
-        + surname.value
-        + ", you are a "
-        + gender.value
-        + " and you are "
-        + age.value
-        + " years old."
-    )
+    result.value = ("Hello " + forename.value + " " + surname.value + ", you are a " + gender.value + " and you are " + age.value + " years old.")
 
 PushButton(app, text="Submit", command=submit)
 
