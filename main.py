@@ -1,9 +1,17 @@
 from guizero import *
 
-def say_goodbye(firstname, surname):
-    text.value = firstname + " " + surname
+def open_window():
+    window.show(wait=True)
 
-app = App()
-text = Text(app)
-button = PushButton(app, command=say_goodbye, args=['John', 'Doe'])
+def close_window():
+    window.hide()
+
+app = App(title="Main Window")
+
+window = Window(app, title="Second Window")
+window.hide()
+
+open = PushButton(app, text="Open", command=open_window)
+close = PushButton(window, text="Close", command=close_window)
+
 app.display()
