@@ -1,17 +1,44 @@
 from guizero import *
 
-def open_window():
-    window.show(wait=True)
+app = App(title="DIL Week 8/9")
 
-def close_window():
-    window.hide()
+title_box = Box(app, width="fill", align="top", border=True)
+Text(title_box, text="GUI DIL (Week 8/9)")
 
-app = App(title="Main Window")
+content_box = Box(app, align="top", width="fill", border=True)
+Text(content_box, text="Enter your details")
 
-window = Window(app, title="Second Window")
-window.hide()
+form_box = Box(content_box, layout="grid", width="fill", align="left", border=True)
 
-open = PushButton(app, text="Open", command=open_window)
-close = PushButton(window, text="Close", command=close_window)
+Text(form_box, grid=[0, 0], text="Enter your forename: ", align="right")
+forename = TextBox(form_box, grid=[0, 1], width="fill")
+
+Text(form_box, grid=[0, 2], text="Enter your surname: ", align="right")
+surname = TextBox(form_box, grid=[0, 3], width="fill")
+
+Text(form_box, grid=[0, 4], text=" ", align="right")
+
+Text(form_box, grid=[1, 0], text="Select your gender: ", align="right")
+gender = Combo(form_box, grid=[1, 1], options=["Male", "Female"], width="fill")
+
+Text(form_box, grid=[2, 0], text="Enter your age: ", align="right")
+age = TextBox(form_box, grid=[2, 1], width="fill")
+
+result = Text(app, grid=[3, 0], text="")
+
+def submit():
+    result.value = (
+        "Hello "
+        + forename.value
+        + " "
+        + surname.value
+        + ", you are a "
+        + gender.value
+        + " and you are "
+        + age.value
+        + " years old."
+    )
+
+PushButton(app, text="Submit", command=submit)
 
 app.display()
